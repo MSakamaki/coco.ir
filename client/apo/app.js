@@ -9,6 +9,10 @@ angular.module('cocoirApp', [
   'ui.bootstrap'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+    // 初回アクセス時の一位キーを保持
+    sessionStorage.setItem('MAPACCESS',
+      location.pathname.replace(/(.)(.+?)/,"$2"));
+    
     $urlRouterProvider
       .otherwise('/');
 
@@ -45,6 +49,7 @@ angular.module('cocoirApp', [
   .run(function ($rootScope, $location, Auth) {
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$stateChangeStart', function (event, next) {
+      //console.log($location);
       Auth.isLoggedInAsync(function(loggedIn) {
         if (next.authenticate && !loggedIn) {
           $location.path('/login');
