@@ -13,10 +13,20 @@ module.exports = function(app) {
   app.use('/api/users', require('./api/user'));
 
   app.use('/auth', require('./auth'));
+
   
   // All undefined asset or api routes should return a 404
   app.route('/:url(api|auth|components|app|bower_components|assets)/*')
    .get(errors[404]);
+
+  // キーアクセス
+  app.route('/[a-zA-Z0-9]{13}').get(function(req,res){
+    console.log (req.originalUrl);
+    // sItw9ss743lke
+    // セッション情報にアクセスキーを記録
+    //res.cookie('MAPACCESS', { key: req.originalUrl });
+    res.sendfile(app.get('appPath') + '/appointment.html');
+  });
 
   // All other routes should redirect to the index.html
   app.route('/*')

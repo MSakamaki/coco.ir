@@ -9,6 +9,8 @@ angular.module('cocoirApp', [
   'ui.bootstrap'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+    sessionStorage.setItem('acckey', location.pathname);
+    
     $urlRouterProvider
       .otherwise('/');
 
@@ -45,6 +47,7 @@ angular.module('cocoirApp', [
   .run(function ($rootScope, $location, Auth) {
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$stateChangeStart', function (event, next) {
+      console.log($location);
       Auth.isLoggedInAsync(function(loggedIn) {
         if (next.authenticate && !loggedIn) {
           $location.path('/login');
