@@ -9,7 +9,8 @@ angular.module('cocoirApp', [
   'ui.bootstrap'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
-    // 初回アクセス時の一位キーを保持
+    // 初回アクセス時のキーを保持
+    //mapacckeyProvider.SaveLocationAccessKey();
     sessionStorage.setItem('MAPACCESS',
       location.pathname.replace(/(.)(.+?)/,"$2"));
     

@@ -9,6 +9,7 @@ var errors = require('./components/errors');
 module.exports = function(app) {
 
   // Insert routes below
+  app.use('/api/appointments', require('./api/appointment'));
   app.use('/api/things', require('./api/thing'));
   app.use('/api/users', require('./api/user'));
 
@@ -23,9 +24,14 @@ module.exports = function(app) {
   app.route('/[a-zA-Z0-9]{13}').get(function(req,res){
     console.log (req.originalUrl);
     // sItw9ss743lke
-    // セッション情報にアクセスキーを記録
-    //res.cookie('MAPACCESS', { key: req.originalUrl });
-    res.sendfile(app.get('appPath') + '/appointment.html');
+
+    // 存在しないデータにアクセスされた場合は、TOP画面に飛ばす。
+    if (req.originalUrl == '/ppppppppppppp') {
+      res.sendfile(app.get('appPath') + '/index.html');
+    }else{
+      // site sucess
+      res.sendfile(app.get('appPath') + '/appointment.html');      
+    }
   });
 
   // All other routes should redirect to the index.html
