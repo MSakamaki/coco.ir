@@ -16,7 +16,7 @@
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,client}) app/app.css -->
-    <link rel="stylesheet" href="apo/app.css">
+    <link rel="stylesheet" href="app/app.css">
       <!-- injector:css -->
       <!-- endinjector -->
     <!-- endbuild -->
@@ -27,7 +27,6 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div>待ち合わせ用画面</div>
     <div ui-view=""></div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -64,6 +63,8 @@
 
         <!-- build:js({.tmp,client}) app/app.js -->
         <script src="apo/app.js"></script>
+
+          <!--
           <script src="apo/main/main.js"></script>
           <script src="apo/main/main.controller.js"></script>
 
@@ -73,6 +74,18 @@
           <script src="apo/appointmap/navi/navi.controller.js"></script>
           <script src="apo/appointmap/map/map.js"></script>
           <script src="apo/appointmap/map/map.controller.js"></script>
+          -->
+          <script src="apo/content/content.controller.js"></script>
+          <script src="apo/content/content.js"></script>
+          <script src="apo/content/startpage/startpage.controller.js"></script>
+          <script src="apo/content/startpage/startpage.js"></script>
+          <script src="apo/content/footer/footer.controller.js"></script>
+          <script src="apo/content/footer/footer.js"></script>
+          <script src="apo/content/navi/navi.controller.js"></script>
+          <script src="apo/content/navi/navi.js"></script>
+          
+          <script src="apo/content/map/map.controller.js"></script>
+          <script src="apo/content/map/map.js"></script>
 
           <script src="apo/service/mapacckey/mapacckey.service.js"></script>
 

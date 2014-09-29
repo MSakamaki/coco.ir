@@ -1,16 +1,16 @@
 'use strict';
 
-describe('Controller: AppointmapCtrl', function () {
+describe('Controller: ContentCtrl', function () {
 
   // load the controller's module
   beforeEach(module('cocoirApp'));
 
-  var AppointmapCtrl, scope;
+  var ContentCtrl, scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    AppointmapCtrl = $controller('AppointmapCtrl', {
+    ContentCtrl = $controller('ContentCtrl', {
       $scope: scope
     });
   }));

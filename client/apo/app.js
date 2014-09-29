@@ -11,16 +11,23 @@ angular.module('cocoirApp', [
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     // 初回アクセス時のキーを保持
     //mapacckeyProvider.SaveLocationAccessKey();
-    sessionStorage.setItem('MAPACCESS',
-      location.pathname.replace(/(.)(.+?)/,"$2"));
+    var sessionkey = location.pathname.replace(/(.)(.+?)/,"$2");
+    sessionStorage.setItem('MAPACCESS',sessionkey);
     
     $urlRouterProvider
-      .otherwise('/');
+      .otherwise('/map/' + sessionkey + '/knock');
+
+    $stateProvider
+      .state('content', {
+        abstract: true,
+        url: '/map',
+        templateUrl: 'apo/main.html'
+      });
 
     $locationProvider.html5Mode(true);
-    $httpProvider.interceptors.push('authInterceptor');
-  })
-
+    //$httpProvider.interceptors.push('authInterceptor');
+  });
+/*
   .factory('authInterceptor', function ($rootScope, $q, $cookieStore, $location) {
     return {
       // Add authorization token to headers
@@ -57,4 +64,4 @@ angular.module('cocoirApp', [
         }
       });
     });
-  });
+  })*/
