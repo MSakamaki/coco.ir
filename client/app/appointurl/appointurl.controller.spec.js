@@ -1,16 +1,16 @@
 'use strict';
 
-describe('Controller: FooterCtrl', function () {
+describe('Controller: AppointurlCtrl', function () {
 
   // load the controller's module
   beforeEach(module('cocoirApp'));
 
-  var FooterCtrl, scope;
+  var AppointurlCtrl, scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    FooterCtrl = $controller('FooterCtrl', {
+    AppointurlCtrl = $controller('AppointurlCtrl', {
       $scope: scope
     });
   }));

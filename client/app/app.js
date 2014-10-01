@@ -10,11 +10,11 @@ angular.module('cocoirApp', [
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
-      .otherwise('/');
+      .otherwise('/main');
 
     $stateProvider
       .state('main', {
-        url: '/',
+        url: '/main',
         views: {
           'navi':{
             templateUrl: 'components/navbar/navbar.html'

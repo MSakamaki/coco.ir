@@ -1,16 +1,16 @@
 'use strict';
 
-describe('Controller: NaviCtrl', function () {
+describe('Controller: MakemapCtrl', function () {
 
   // load the controller's module
   beforeEach(module('cocoirApp'));
 
-  var NaviCtrl, scope;
+  var MakemapCtrl, scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    NaviCtrl = $controller('NaviCtrl', {
+    MakemapCtrl = $controller('MakemapCtrl', {
       $scope: scope
     });
   }));

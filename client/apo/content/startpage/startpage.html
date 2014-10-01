@@ -1,7 +1,8 @@
 <div class="col-md-12">
- <div>
+ <form name="nameform" novalidate class="simple-form">
   <div>名前を入力してください</div>
-  <input type="text" ng-model="uname" />
-  <a ui-sref="content.map.apoint({uname: uname})" >待ち合わせルームに進む</a>
- </div>
+  <input type="text" ng-model="uname" required/>
+  <button class="btn btn-link" ui-sref="content.map.apoint({uname: uname})" ng-disabled="! nameform.$valid" >待ち合わせルームに進む</button>
+
+ </form>
 </div>
