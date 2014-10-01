@@ -12,6 +12,22 @@ angular.module('cocoirApp', [
     $urlRouterProvider
       .otherwise('/');
 
+    $stateProvider
+      .state('main', {
+        url: '/',
+        views: {
+          'navi':{
+            templateUrl: 'components/navbar/navbar.html'
+          },
+          'content': {
+            templateUrl: 'app/main/main.html'
+          },
+          'foot': {
+            templateUrl: 'components/footer/footer.html'
+          }
+        }
+      });
+
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');
   })
