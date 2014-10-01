@@ -1,7 +1,7 @@
 <div class="col-md-12">
  <div>
   <div>名前を入力してください</div>
-  <input type="text" ng-model="name" />
-  <a ui-sref="content.map.apoint" >待ち合わせルームに進む</a>
+  <input type="text" ng-model="uname" />
+  <a ui-sref="content.map.apoint({uname: uname})" >待ち合わせルームに進む</a>
  </div>
 </div>

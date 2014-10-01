@@ -1,6 +1,11 @@
 'use strict';
 
 angular.module('cocoirApp')
-  .controller('NaviCtrl', function ($scope) {
-    $scope.message = 'Hello';
+  .controller('NaviCtrl', function () {
+    this.menu = [{
+      'title': 'Knock in',
+      'link': '/'
+    }];
+
+    this.isCollapsed = true;
   });

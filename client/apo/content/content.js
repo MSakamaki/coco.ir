@@ -14,7 +14,8 @@ angular.module('cocoirApp')
           },
           'navi': {
             templateUrl: 'apo/content/navi/navi.html',
-            controller: 'NaviCtrl'
+            controller: 'NaviCtrl',
+            controllerAs: 'navi'
           },
           'content': {
             template: '<div> Main Body Detail</div>'
@@ -22,6 +23,7 @@ angular.module('cocoirApp')
           'foot': {
             templateUrl: 'apo/content/footer/footer.html',
             controller: 'FooterCtrl'
+            controllerAs: 'footer'
           }
         }
       });
