@@ -4,7 +4,7 @@ angular.module('cocoirApp')
   .config(function ($stateProvider) {
     $stateProvider
       .state('content.map', {
-        url: '/{mapid:[a-zA-Z0-9]{13}}',
+        url: '/{mapid:[a-zA-Z0-9]{100}}',
         views: {
           '':{
             template: '<div>Template View</div>'

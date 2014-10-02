@@ -6,9 +6,11 @@ angular.module('cocoirApp', [
   'ngSanitize',
   'btford.socket-io',
   'ui.router',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'angular.zeroclipboard'
 ])
-  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+  .config([   '$stateProvider','$urlRouterProvider', '$locationProvider', '$httpProvider', 'uiZeroclipConfigProvider'
+    ,function ($stateProvider,  $urlRouterProvider ,  $locationProvider,   $httpProvider,   uiZeroclipConfigProvider) {
     $urlRouterProvider
       .otherwise('/main');
 
@@ -27,10 +29,18 @@ angular.module('cocoirApp', [
           }
         }
       });
+    // zeroclip setting
+    uiZeroclipConfigProvider.setZcConf({
+      moviePath: 'bower_components/zeroclipboard/ZeroClipboard.swf'
+    });
+    uiZeroclipConfigProvider.setOptions({
+      buttonText: 'Copy Me!',
+      emitEvent: true
+    });
 
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');
-  })
+  }])
 
   .factory('authInterceptor', function ($rootScope, $q, $cookieStore, $location) {
     return {

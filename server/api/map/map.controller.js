@@ -20,26 +20,30 @@ var randobet = function(n, b) {
 // Get list of maps
 exports.index = function(req, res) {
   // ランダムX桁URL生成
-  var rnum = randobet(13);
-  console.log(rnum);
+  var rnum = randobet(100);
+
   // MongoDBへの登録
   Map.create({ mapid: rnum }, function(err, map) {
     if(err) { return handleError(res, err); }
     return res.json(200, {mapid: rnum});
-
   });
 };
 
 exports.exist = function(req, res) {
   // ランダムURLの存在確認
-  Map.find({ mapid: req.params.id}, function (err, map) {
-    if(err) { return handleError(res, err); }
-    if(!map) { return res.send(404); }
-    //console.log(map);
+  exports._existPromise(req.params.id).then(function(map){
+    if (!map) return res.json(404);
     return res.json(200);
   });
   return res.json(404);
 };
+
+// Mapのpromiseを返す
+exports._existPromise = function(id) {
+  // ランダムURLの存在確認
+  return Map.find({ mapid: id }).exec();
+};
+
 
 // Get a single map
 exports.show = function(req, res) {
@@ -61,6 +65,20 @@ exports.create = function(req, res) {
 // Updates an existing map in the DB.
 exports.update = function(req, res) {
   if(req.body._id) { delete req.body._id; }
+  Map.findById(req.params.id, function (err, map) {
+    if (err) { return handleError(res, err); }
+    if(!map) { return res.send(404); }
+    var updated = _.merge(map, req.body);
+    updated.save(function (err) {
+      if (err) { return handleError(res, err); }
+      return res.json(200, map);
+    });
+  });
+};
+
+exports.update_knock = function(req, res){
+  if(req.body._id) { delete req.body._id; }
+  console.log('knock');
   Map.findById(req.params.id, function (err, map) {
     if (err) { return handleError(res, err); }
     if(!map) { return res.send(404); }

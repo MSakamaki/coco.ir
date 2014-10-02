@@ -5,6 +5,7 @@
 'use strict';
 
 var errors = require('./components/errors');
+var mapCtrl    = require('./api/map/map.controller');
 
 module.exports = function(app) {
 
@@ -22,17 +23,20 @@ module.exports = function(app) {
    .get(errors[404]);
 
   // キーアクセス
-  app.route('/[a-zA-Z0-9]{13}').get(function(req,res){
+  app.route('/[a-zA-Z0-9]{100}').get(function(req,res) {
     console.log (req.originalUrl);
-    // sItw9ss743lke
-
-    // 存在しないデータにアクセスされた場合は、TOP画面に飛ばす。
-    if (req.originalUrl == '/ppppppppppppp') {
-      res.sendfile(app.get('appPath') + '/index.html');
-    }else{
-      // site sucess
-      res.sendfile(app.get('appPath') + '/appointment.html');      
-    }
+    //sItw9ss743lke
+    var mapid = req.originalUrl.replace(/(.)(.+?)/,"$2")
+    mapCtrl._existPromise(mapid).then(function(map){
+      console.log ('map',map);
+      if (! map) { res.sendfile(app.get('appPath') + '/index.html'); }
+      if (map.length) {
+        res.sendfile(app.get('appPath') + '/appointment.html'); 
+      }else{
+        // site sucess
+        res.sendfile(app.get('appPath') + '/index.html');
+      }
+    });
   });
 
   // All other routes should redirect to the index.html

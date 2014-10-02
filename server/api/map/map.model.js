@@ -5,7 +5,8 @@ var mongoose = require('mongoose'),
 
 var MapSchema = new Schema({
   mapid: String,
-  info: String,
+  member: Array,
+  create_date: Date,
   active: Boolean
 });
 
