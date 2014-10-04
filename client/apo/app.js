@@ -6,42 +6,28 @@ angular.module('cocoirApp', [
   'ngSanitize',
   'btford.socket-io',
   'ui.router',
-  'ui.bootstrap',
-  'angular.zeroclipboard'
+  'ui.bootstrap'
 ])
-  .config([   '$stateProvider','$urlRouterProvider', '$locationProvider', '$httpProvider', 'uiZeroclipConfigProvider'
-    ,function ($stateProvider,  $urlRouterProvider ,  $locationProvider,   $httpProvider,   uiZeroclipConfigProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+    // 初回アクセス時のキーを保持
+    //mapacckeyProvider.SaveLocationAccessKey();
+    var sessionkey = location.pathname.replace(/(.)(.+?)/,"$2");
+    sessionStorage.setItem('MAPACCESS',sessionkey);
+    
     $urlRouterProvider
-      .otherwise('/main');
+      .otherwise('/map/' + sessionkey + '/knock');
 
     $stateProvider
-      .state('main', {
-        url: '/main',
-        views: {
-          'navi':{
-            templateUrl: 'components/navbar/navbar.html'
-          },
-          'content': {
-            templateUrl: 'app/main/main.html'
-          },
-          'foot': {
-            templateUrl: 'components/footer/footer.html'
-          }
-        }
+      .state('content', {
+        abstract: true,
+        url: '/map',
+        templateUrl: 'apo/main.html'
       });
-    // zeroclip setting
-    uiZeroclipConfigProvider.setZcConf({
-      moviePath: 'bower_components/zeroclipboard/ZeroClipboard.swf'
-    });
-    uiZeroclipConfigProvider.setOptions({
-      buttonText: 'Copy Me!',
-      emitEvent: true
-    });
 
     $locationProvider.html5Mode(true);
-    $httpProvider.interceptors.push('authInterceptor');
-  }])
-
+    //$httpProvider.interceptors.push('authInterceptor');
+  });
+/*
   .factory('authInterceptor', function ($rootScope, $q, $cookieStore, $location) {
     return {
       // Add authorization token to headers
@@ -71,10 +57,11 @@ angular.module('cocoirApp', [
   .run(function ($rootScope, $location, Auth) {
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$stateChangeStart', function (event, next) {
+      //console.log($location);
       Auth.isLoggedInAsync(function(loggedIn) {
         if (next.authenticate && !loggedIn) {
           $location.path('/login');
         }
       });
     });
-  });
+  })*/
