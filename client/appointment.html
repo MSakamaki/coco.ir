@@ -20,16 +20,15 @@
       <!-- injector:css -->
       <!-- endinjector -->
     <!-- endbuild -->
+
   </head>
-  <body ng-app="cocoirApp">
+  <body ng-app="cocoirApp" >
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div ui-view="navi"></div>
-    <div ui-view="content" class="text-center"></div>
-    <div ui-view="foot"></div>
+    <div ui-view=""></div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>
@@ -59,27 +58,47 @@
       <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
       <script src="bower_components/angular-ui-utils/ui-utils.js"></script>
       <script src="bower_components/angular-ui-map/ui-map.js"></script>
-      <script src="bower_components/zeroclipboard/ZeroClipboard.js"></script>
-      <script src="bower_components/angular-zeroclipboard/src/angular-zeroclipboard.js"></script>
       <!-- endbower -->
       <script src="socket.io-client/socket.io.js"></script>
     <!-- endbuild -->
 
         <!-- build:js({.tmp,client}) app/app.js -->
-        <script src="app/app.js"></script>
-          <!-- injector:js -->
-          <script src="app/appointurl/appointurl.controller.js"></script>
-          <script src="app/appointurl/appointurl.js"></script>
-          <script src="app/makemap/makemap.controller.js"></script>
-          <script src="app/makemap/makemap.js"></script>
+        <script src="apo/app.js"></script>
+
+          <!--
+          <script src="apo/main/main.js"></script>
+          <script src="apo/main/main.controller.js"></script>
+
+          <script src="apo/appointmap/appointmap.js"></script>
+          <script src="apo/appointmap/appointmap.controller.js"></script>
+          <script src="apo/appointmap/navi/navi.js"></script>
+          <script src="apo/appointmap/navi/navi.controller.js"></script>
+          <script src="apo/appointmap/map/map.js"></script>
+          <script src="apo/appointmap/map/map.controller.js"></script>
+          -->
+          <script src="apo/content/content.controller.js"></script>
+          <script src="apo/content/content.js"></script>
+          <script src="apo/content/startpage/startpage.controller.js"></script>
+          <script src="apo/content/startpage/startpage.js"></script>
+          <script src="apo/content/footer/footer.controller.js"></script>
+          <script src="apo/content/footer/footer.js"></script>
+          <script src="apo/content/navi/navi.controller.js"></script>
+          <script src="apo/content/navi/navi.js"></script>
+          
+          <script src="apo/content/map/map.controller.js"></script>
+          <script src="apo/content/map/map.js"></script>
+
+          <script src="apo/service/mapacckey/mapacckey.service.js"></script>
+
           <script src="components/auth/auth.service.js"></script>
           <script src="components/auth/user.service.js"></script>
-          <script src="components/map.service/map.service.service.js"></script>
           <script src="components/modal/modal.service.js"></script>
+          <script src="components/map.service/map.service.service.js"></script>
           <script src="components/mongoose-error/mongoose-error.directive.js"></script>
           <script src="components/navbar/navbar.controller.js"></script>
           <script src="components/socket/socket.service.js"></script>
           <!-- endinjector -->
         <!-- endbuild -->
+        <script src="//localhost:35729/livereload.js"></script>
 </body>
 </html>
