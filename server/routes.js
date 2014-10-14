@@ -24,7 +24,7 @@ module.exports = function(app) {
 
   // キーアクセス
   app.route('/[a-zA-Z0-9]{100}').get(function(req,res) {
-    console.log (req.originalUrl);
+    //console.log (req.originalUrl);
     //sItw9ss743lke
     var mapid = req.originalUrl.replace(/(.)(.+?)/,"$2")
     mapCtrl._existPromise(mapid).then(function(map){
